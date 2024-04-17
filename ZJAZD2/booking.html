@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-EN">
 <head>
-    <title>Zjazd 2 - Zadania</title>
+    <title>Booking</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Family Lato -->
@@ -12,16 +12,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <section class="left-side">
-        </section>
+    <aside>
+        <img src="hotel.png"  alt="hotel"/>
+    </aside>
 
+    <main>
         <section class="right-side">
             <h2>Rezerwacja Pobytu</h2>
-            <form name="booking" method="GET" action="booking.php">
+            <form name="booking" method="POST" action="booking.php" autocomplete="on" autofocus>
                 <fieldset>
                     Ilość osób:
-                    <select name="quantity" required>
+                    <select name="guests" id="guests" onchange="selectGuests()" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -29,13 +30,19 @@
                     </select>
                 </fieldset>
 
-                <fieldset>
-                    Dane do rezerwacji:
-                    <input type="text" name="firstName" placeholder="IMIĘ*:" required><br>
-                    <input type="text" name="lastName" placeholder="NAZWISKO*: " required><br>
-                    <input type="text" name="address" placeholder="ADRES*: "><br>
-                    <input type="text" name="card" placeholder="NUMER KARTY*: " required><br>
-                    <input type="email" name="email" placeholder="E-MAIL*: " required><br>
+                <fieldset id="data">
+                    <div>
+                        Dane do rezerwacji:
+                        <input type="text" name="firstName[]" placeholder="IMIĘ*:" required><br>
+                        <input type="text" name="lastName[]" placeholder="NAZWISKO*: " required><br>
+                        <input type="text" name="address" placeholder="ADRES*: " autocomplete="on"><br>
+                        <input type="text" name="card" placeholder="NUMER KARTY*: " required><br>
+                        <input type="email" name="email" placeholder="E-MAIL*: " autocomplete="on" required><br>
+                    </div>
+                    <div id="guestData">
+
+                    </div>
+
                 </fieldset>
 
                 <fieldset class="date">
@@ -54,34 +61,34 @@
                     Wybierz udogodnienia:
                     <div>
                         <label for="kids">
-                            <input type="checkbox" name="extras" id="kids">
+                            <input type="checkbox" name="extras[]" id="kids" value="Dostawka dla dziecka">
                             Dostawka dla dziecka
                         </label>
 
                         <label for="AutoClima">
-                            <input type="checkbox" name="extras" id="AutoClima">
+                            <input type="checkbox" name="extras[]" id="AutoClima" value="Klimatyzacja">
                             Klimatyzacja
                         </label>
 
                         <label for="smoking">
-                            <input type="checkbox" name="extras" id="smoking">
+                            <input type="checkbox" name="extras[]" id="smoking" value="Popielniczka">
                             Popielniczka
                         </label>
                     </div>
 
                     <div>
                         <label for="wifi">
-                            <input type="checkbox" name="extras" id="wifi">
+                            <input type="checkbox" name="extras[]" id="wifi" value="Wi-Fi">
                             Wi-Fi
                         </label>
 
                         <label for="safe">
-                            <input type="checkbox" name="extras" id="safe">
+                            <input type="checkbox" name="extras[]" id="safe" value="Sejf">
                             Sejf
                         </label>
 
                         <label for="ocean">
-                            <input type="checkbox" name="extras" id="ocean">
+                            <input type="checkbox" name="extras[]" id="ocean" value="Widok na ocean">
                             Widok na ocean
                         </label>
                     </div>
@@ -113,5 +120,22 @@
             <a href="#">KONTAKT</a> | <a href="#">LOKALIZACJA</a>
         </section>
     </footer>
+    <script>
+        let guestData = document.getElementById("guestData");
+        function selectGuests() {
+            let guests = document.getElementById("guests");
+            guestData.style.display = "block";
+            guestData.innerHTML = '';
+            if (guests.value > 1) {
+                guestData.innerHTML += "Dane osób towarzyszących";
+                for(let i = 1; i < guests.value; i++) {
+                    guestData.innerHTML += "<div><input type=\"text\" name=\"firstName[]\" placeholder=\"IMIĘ*:\" required><input type=\"text\" name=\"lastName[]\" placeholder=\"NAZWISKO*: \" required></div>";
+                }
+            } else {
+                guestData.style.display = "none";
+            }
+        }
+
+    </script>
 </body>
 </html>
