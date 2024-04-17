@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-EN">
+<head>
+    <title>Zjazd 2 - Zadania</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Family Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&amp;display=swap" rel="stylesheet">
+    <!-- FontAwesome 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <section class="left-side">
+        </section>
+
+        <section class="right-side">
+            <h2>Rezerwacja Pobytu</h2>
+            <form name="booking" method="GET" action="booking.php">
+                <fieldset>
+                    Ilość osób:
+                    <select name="quantity" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    Dane do rezerwacji:
+                    <input type="text" name="firstName" placeholder="IMIĘ*:" required><br>
+                    <input type="text" name="lastName" placeholder="NAZWISKO*: " required><br>
+                    <input type="text" name="address" placeholder="ADRES*: "><br>
+                    <input type="text" name="card" placeholder="NUMER KARTY*: " required><br>
+                    <input type="email" name="email" placeholder="E-MAIL*: " required><br>
+                </fieldset>
+
+                <fieldset class="date">
+                    Data zameldowania:
+                    <input type="date" name="dateIn" required>
+                    <input type="time" name="timeIn" required>
+                </fieldset>
+
+                <fieldset class="date">
+                    Data wymeldowania:
+                    <input type="date" name="dateOut" required>
+                    <input type="time" name="timeOut" required>
+                </fieldset>
+
+                <fieldset class="extras">
+                    Wybierz udogodnienia:
+                    <div>
+                        <label for="kids">
+                            <input type="checkbox" name="extras" id="kids">
+                            Dostawka dla dziecka
+                        </label>
+
+                        <label for="AutoClima">
+                            <input type="checkbox" name="extras" id="AutoClima">
+                            Klimatyzacja
+                        </label>
+
+                        <label for="smoking">
+                            <input type="checkbox" name="extras" id="smoking">
+                            Popielniczka
+                        </label>
+                    </div>
+
+                    <div>
+                        <label for="wifi">
+                            <input type="checkbox" name="extras" id="wifi">
+                            Wi-Fi
+                        </label>
+
+                        <label for="safe">
+                            <input type="checkbox" name="extras" id="safe">
+                            Sejf
+                        </label>
+
+                        <label for="ocean">
+                            <input type="checkbox" name="extras" id="ocean">
+                            Widok na ocean
+                        </label>
+                    </div>
+                </fieldset>
+
+                <label for="privacy" class="privacy">
+                    <input type="checkbox" id="privacy" required>
+                    Akceptuję regulamin rezerwacji pobytu w hotelu
+                </label>
+
+                <div class="button">
+                    <input type="submit" value="Zarezerwuj">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <a href="#" target="_blank" id="facebookIcon">
+                <i class="fa-brands fa-facebook fa-2xl"></i>
+            </a>
+            <a href="#" target="_blank" id="instagramIcon">
+                <i class="fa-brands fa-instagram fa-2xl"></i>
+            </a>
+        </section>
+
+        <section>
+            <a href="#">KONTAKT</a> | <a href="#">LOKALIZACJA</a>
+        </section>
+    </footer>
+</body>
+</html>
