@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-EN">
 <head>
-    <title>Zjazd 2 - Zadania</title>
+    <title>Booking</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font Family Lato -->
@@ -12,23 +12,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-    <section class="left-side">
-    </section>
 
+<aside>
+    <img src="hotel.png" alt="hotel"/>
+</aside>
+
+<main>
     <section class="right-side">
-        <h2>Twoja rezerwacja</h2>
+        <h2>Dane rezerwującego</h2>
         <?php
-        $firstName = $_GET["firstName"];
-        $lastName = $_GET["lastName"];
-        $address = $_GET["address"];
-        $card = $_GET["card"];
-        $email = $_GET["email"];
-        $date = $_GET["date"];
-        $time = $_GET["time"];
-        $extraBed = $_GET["extraBed"];
-        $extras = $_GET["extras"];
-        echo $firstName;
+        $guests = $_POST["guests"];
+        $firstName = $_POST["firstName"];
+        $lastName = $_POST["lastName"];
+        $address = $_POST["address"];
+        $card = $_POST["card"];
+        $email = $_POST["email"];
+        $dateIn = $_POST["dateIn"];
+        $timeIn = $_POST["timeIn"];
+        $dateOut = $_POST["dateOut"];
+        $timeOut = $_POST["timeOut"];
+        $extras = $_POST["extras"];
+
+
+        echo "<p>Imię: $firstName[0] <p>";
+        echo "<p>Nazwisko: $lastName[0]";
+        echo "<p>Adres: $address</p>";
+        echo "<p>Numer karty kredytowej: $card</p>";
+        echo "<p>E-mail: $email</p>";
+        echo "<p>Data przyjazdu: $dateIn</p>";
+        echo "<p>Godzina przyjazdu: $timeIn</p>";
+        echo "<p>Data wyjazdu: $dateOut</p>";
+        echo "<p>Godzina wyjazdu: $timeOut</p>";
+        echo "<p>Udogodnienia: ";
+        foreach ($extras as $extra) {
+            echo "$extra, ";
+        }
+        echo "</p>";
+        echo "<p>Liczba gości: $guests</p>";
+        if ($guests > 1) {
+            echo "<h2>Dane gości: </h2>";
+        }
+        for($i = 1; $i < count($firstName); $i++) {
+            echo $firstName[$i] . " " . $lastName[$i] . "<br>";
+        }
+
         ?>
     </section>
 </main>
@@ -49,4 +76,3 @@
 </footer>
 </body>
 </html>
-
